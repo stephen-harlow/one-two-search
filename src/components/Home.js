@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import SimpleForm from './SimpleForm';
-import { Header } from 'semantic-ui-react';
-
-
+// import SimpleForm from './SimpleForm';
+import ComplexForm from './ComplexForm';
+//import { Header } from 'semantic-ui-react';
+import Results from './Results/Results';
 class Home extends Component {
 
   constructor(props) {
@@ -12,29 +12,32 @@ class Home extends Component {
   }
 
   yahooWidget() {
-    const query = this.props.weather.query;
-    if (query && query.results) {
-      let html = query.results.channel.item.description;
-      // remove <![CDATA[ and ]]>
-      html = html.replace(/(<!\[CDATA\[|]]>)/g, '');
-      return (
-        <div>
-          <br/>
-          <Header as='h3' textAlign='center'>
-            {query.results.channel.description}
-          </Header>
-          <div dangerouslySetInnerHTML={{__html: html}}></div>
-        </div>
-      );
-    } else {
-      return false;
-    }
+      const query = this.props.food;
+      console.log("Home")
+      console.log(this.props)
+      if (query && query.businesses && query.businesses[0]) {
+        let html = JSON.stringify(query.businesses);
+        // remove <![CDATA[ and ]]>
+          // html = html.replace(/(<!\[CDATA\[|]]>)/g, '');
+            //
+        return (
+          <div>
+              <Results items={query.businesses}/>
+          </div>
+
+        );
+      } else {
+        console.log("Home Failed")
+
+        return false;
+      }
+
   }
 
   render() {
     return (
       <div>
-        <SimpleForm/>
+        <ComplexForm/>
         {this.yahooWidget()}
       </div>
     );

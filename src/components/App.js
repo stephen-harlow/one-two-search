@@ -7,7 +7,8 @@ import Main from './Main';
 function mapStateToProps(state) {
   return {
     form: state.form,
-    weather: state.weather
+    food: state.food
+
   }
 }
 

@@ -8,7 +8,7 @@ class Main extends Component {
     return (
       <Container text>
         <Header as="h1" textAlign="center">
-          <Link to="/">Weather</Link>
+          <Link to="/">Food</Link>
         </Header>
         {React.cloneElement(this.props.children, this.props)}
       </Container>
